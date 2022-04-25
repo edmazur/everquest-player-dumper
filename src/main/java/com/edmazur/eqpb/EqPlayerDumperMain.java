@@ -13,6 +13,7 @@ public class EqPlayerDumperMain {
     final Path eqInstallDirectory = Paths.get(args[0]);
     final ZoneId timezone = ZoneId.of(args[1]);
     final String server = args[2];
+    final String character = args[3];
 
     PlayerUniverse playerUniverse = new PlayerUniverse();
     // TODO: Iterate over all characters that have log files.
@@ -20,7 +21,7 @@ public class EqPlayerDumperMain {
         eqInstallDirectory,
         timezone,
         server,
-        "Stanvern",
+        character,
         Instant.MIN,
         Instant.now());
     new SingleLogDumper(eqLog, playerUniverse).parse();
