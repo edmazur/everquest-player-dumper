@@ -1,10 +1,9 @@
 package com.edmazur.eqpb;
 
+import com.edmazur.eqlp.EqLogEvent;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.edmazur.eqlp.EqLogEvent;
 
 // TODO: Extend this to look at other data-carrying messages like /guildst.
 public class EqPlayerParser {
@@ -36,21 +35,21 @@ public class EqPlayerParser {
     }
 
     String name = matcher.group("name");
-    Optional<EqClass> maybeEqClass = matcher.group("class") == null ?
-        Optional.empty() :
-        Optional.of(EqClass.fromAnyName(matcher.group("class")));
-    Optional<Integer> maybeLevel = matcher.group("level") == null ?
-        Optional.empty() :
-        Optional.of(Integer.parseInt(matcher.group("level")));
-    Optional<String> maybeGuild = matcher.group("anon") == null ?
+    Optional<EqClass> maybeEqClass = matcher.group("class") == null
+        ? Optional.empty()
+        : Optional.of(EqClass.fromAnyName(matcher.group("class")));
+    Optional<Integer> maybeLevel = matcher.group("level") == null
+        ? Optional.empty()
+        : Optional.of(Integer.parseInt(matcher.group("level")));
+    Optional<String> maybeGuild = matcher.group("anon") == null
         // Not anon, guild information will be visible if guilded.
-        (matcher.group("guild") == null ?
-            Optional.of("") :
-            Optional.of(matcher.group("guild"))) :
+        ? (matcher.group("guild") == null
+            ? Optional.of("")
+            : Optional.of(matcher.group("guild")))
         // Anon, can't make determination about guild unless it's present.
-        (matcher.group("guild") == null ?
-            Optional.empty() :
-            Optional.of(matcher.group("guild")));
+        : (matcher.group("guild") == null
+            ? Optional.empty()
+            : Optional.of(matcher.group("guild")));
     return Optional.of(new EqPlayer(
         name, maybeEqClass, maybeLevel, maybeGuild, eqLogEvent.getTimestamp()));
   }

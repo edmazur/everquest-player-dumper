@@ -1,10 +1,11 @@
 package com.edmazur.eqpb;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.edmazur.eqlp.EqLogEvent;
+import org.junit.jupiter.api.Test;
 
 // TODO: Add more unit tests.
 class EqPlayerParserTest {
@@ -26,8 +27,8 @@ class EqPlayerParserTest {
   @Test
   void parseWhoAnonNoGuildYesZoneYes() {
     EqPlayer eqPlayer = EqPlayerParser.parse(EqLogEvent.parseFromLine(
-        "[Tue Jan 18 22:01:20 2022] [60 Warder] Stanvern (Wood Elf) <Force of Will> ZONE: templeveeshan"
-        ).get()).get();
+        "[Tue Jan 18 22:01:20 2022] "
+            + "[60 Warder] Stanvern (Wood Elf) <Force of Will> ZONE: templeveeshan").get()).get();
     assertEquals("Stanvern", eqPlayer.getName());
     assertTrue(eqPlayer.isEqClassKnown());
     assertEquals(EqClass.RANGER, eqPlayer.getEqClass());

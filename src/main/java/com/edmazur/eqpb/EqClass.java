@@ -122,8 +122,6 @@ public enum EqClass {
     EqClass eqClass = NAME_TO_EQ_CLASS.get(anyName);
     if (eqClass == null) {
       // TODO: Figure out how to complain here.
-//      throw new UnrecognizedEqClassException(
-//          "Unrecognized EqClass: " + anyName);
     }
     return eqClass;
   }
@@ -143,11 +141,5 @@ public enum EqClass {
   public String toString() {
     return name;
   }
-
-//  public class UnrecognizedEqClassException extends Exception {
-//    public UnrecognizedEqClassException(String message) {
-//      super(message);
-//    }
-//  }
 
 }

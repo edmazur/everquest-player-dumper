@@ -1,9 +1,8 @@
 package com.edmazur.eqpb;
 
-import java.util.Optional;
-
 import com.edmazur.eqlp.EqLogEvent;
 import com.edmazur.eqlp.EqLogListener;
+import java.util.Optional;
 
 public class EqPlayerInfoListener implements EqLogListener {
 

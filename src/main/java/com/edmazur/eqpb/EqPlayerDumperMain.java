@@ -1,11 +1,10 @@
 package com.edmazur.eqpb;
 
+import com.edmazur.eqlp.EqLog;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Instant;
 import java.time.ZoneId;
-
-import com.edmazur.eqlp.EqLog;
 
 public class EqPlayerDumperMain {
 
@@ -27,9 +26,9 @@ public class EqPlayerDumperMain {
     new SingleLogDumper(eqLog, playerUniverse).parse();
 
     for (EqPlayer eqPlayer : playerUniverse.getPlayers()) {
-      String eqClass = eqPlayer.isEqClassKnown() ?
-          eqPlayer.getEqClass().getName() :
-          "UNKNOWN";
+      String eqClass = eqPlayer.isEqClassKnown()
+          ? eqPlayer.getEqClass().getName()
+          : "UNKNOWN";
       System.out.println(eqPlayer.getName() + "," + eqClass);
     }
   }
