@@ -31,7 +31,9 @@ Parameter notes:
 
 Gotcha:
 
-The last line in the log file must be in the future or the program will hang.
+The last line in the log file must be in the future or the program will hang. To
+deal with this in standalone files, just copy/paste the last line and manually
+update it to a future timestamp.
 
 Merging:
 
